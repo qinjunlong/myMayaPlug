@@ -3,10 +3,10 @@ from PySide2.QtWidgets import *
 from PySide2.QtCore import *
 from MyPlug.TestFunction import Classtest_02
 from MyPlug.Function_01 import ExportCamer_C
+import importlib
 
-
-reload(Classtest_02)
-reload(ExportCamer_C)
+importlib.reload(Classtest_02)
+importlib.reload(ExportCamer_C)
 
 
 class win(QWidget):
