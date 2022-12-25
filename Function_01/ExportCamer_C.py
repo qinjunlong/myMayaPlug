@@ -1,6 +1,7 @@
 import maya.cmds as cmds
-class ExportCamer_C():
-    def __init__(self):
+class ExportCamer_C(object):
+    def __init__(self,Q_tmie):
+        self.BakeTime = Q_tmie
         print("ExportCamer_C_success!!")
         
     def CallBTN(self):
@@ -13,7 +14,7 @@ class ExportCamer_C():
             cmds.parent( 'cam_LOC', lsOBJ[0], relative=True )
             cmds.parent( 'cam_LOC', w=True )
             parentConstraint_loc = cmds.parentConstraint( lsOBJ[0], 'cam_LOC' ,mo=True)
-            cmds.bakeResults('cam_LOC' ,t = (1,30) )
+            cmds.bakeResults('cam_LOC' ,t = (1,self.BakeTime) )
             cmds.delete(parentConstraint_loc[0])
             cmds.parent( 'cam_LOC', 'global_LOC')
             cameraName = cmds.camera(n='bake_'+lsOBJ[0])
